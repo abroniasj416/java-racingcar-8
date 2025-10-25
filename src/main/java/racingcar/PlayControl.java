@@ -25,4 +25,16 @@ public class PlayControl {
         }
         return cars;
     }
+
+    int readRounds() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String line = Console.readLine();
+        try {
+            int n = Integer.parseInt(line.trim());
+            if (n < 1) throw new NumberFormatException();
+            return n;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
+        }
+    }
 }
