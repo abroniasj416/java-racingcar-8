@@ -18,7 +18,7 @@ public class PlayControl {
             play.playOneRound();
         }
 
-        printWinners(cars); // 다음 커밋에서 구현
+        printWinners(cars);
     }
 
 
@@ -52,5 +52,17 @@ public class PlayControl {
         }
     }
 
-    // TODO : printWinners 메서드 구현
+    private void printWinners(List<Car> cars) {
+        int max = cars.stream()
+                .mapToInt(Car::position)
+                .max()
+                .orElse(0);
+
+        List<String> winners = cars.stream()
+                .filter(c -> c.position() == max)
+                .map(Car::name)
+                .toList();
+
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
 }
