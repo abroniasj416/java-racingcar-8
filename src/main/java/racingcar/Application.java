@@ -2,11 +2,7 @@ package racingcar;
 
 public class Application {
     public static void main(String[] args) {
-        try {
-            new PlayControl().start();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage()); // System.exit() 금지
-        }
+        new PlayControl().start();
     }
 }
 
