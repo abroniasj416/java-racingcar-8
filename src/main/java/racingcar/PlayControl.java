@@ -6,8 +6,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PlayControl {
+    void start() {
+        List<Car> cars = readCars();
+        int rounds = readRounds();
 
-    // 이름 입력만 우선 구현
+        System.out.println();
+        System.out.println("실행 결과");
+
+        Play play = new Play(cars);
+        for (int i = 0; i < rounds; i++) {
+            play.playOneRound();
+        }
+
+        printWinners(cars); // 다음 커밋에서 구현
+    }
+
+
     List<Car> readCars() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String line = Console.readLine();
@@ -37,4 +51,6 @@ public class PlayControl {
             throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
         }
     }
+
+    // TODO : printWinners 메서드 구현
 }
